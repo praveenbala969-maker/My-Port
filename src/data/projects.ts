@@ -36,8 +36,8 @@ export const PROJECTS: ProjectItem[] = [
     tags: ['E-Commerce', 'EdTech', 'Design System', 'Responsive Web'],
     screenshots: {
       folder: '/projects/koenig',
-      after: ['Course.png', 'Tech.png', 'Home.png'],
-      before: ['Course_before.png', 'Tech_before.png', 'Home_before.png'],
+      after: ['After-Course.webp', 'After-Tech.webp', 'After-Home.webp'],
+      before: ['Before-Course.webp', 'Before-Tech-Course.webp', 'Home-Navigation.webp'],
     },
     liveUrl: 'https://www.koenig-solutions.com',
   },

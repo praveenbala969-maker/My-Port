@@ -17,7 +17,8 @@ import {
   RefreshCw,
   Eye,
   Sliders,
-  ArrowRight
+  ArrowRight,
+  X
 } from 'lucide-react';
 
 export type ScreenKey = 'course' | 'tech' | 'home';
@@ -184,8 +185,32 @@ const SCREENS: ScreenConfig[] = [
   }
 ];
 
-const STORAGE_KEY = 'koenig_showcase_screenshots_v2';
-const STORAGE_KEY_FALLBACK = 'koenig_showcase_screenshots';
+const STORAGE_KEY = 'koenig_showcase_screenshots_v3';
+const STORAGE_KEY_FALLBACK = 'koenig_showcase_screenshots_v2';
+
+export const DEFAULT_SCREENSHOTS: Record<
+  ScreenKey,
+  { before: string; after: string; beforeName: string; afterName: string }
+> = {
+  course: {
+    before: '/projects/koenig/Before-Course.webp',
+    after: '/projects/koenig/After-Course.webp',
+    beforeName: 'Before-Course.webp',
+    afterName: 'After-Course.webp'
+  },
+  tech: {
+    before: '/projects/koenig/Before-Tech-Course.webp',
+    after: '/projects/koenig/After-Tech.webp',
+    beforeName: 'Before-Tech Course.webp',
+    afterName: 'After-Tech.webp'
+  },
+  home: {
+    before: '/projects/koenig/Home-Navigation.webp',
+    after: '/projects/koenig/After-Home.webp',
+    beforeName: 'Home - Navigation.webp',
+    afterName: 'After-Home.webp'
+  }
+};
 
 export function BeforeAfterShowcase() {
   const [activeScreen, setActiveScreen] = useState<ScreenKey>('course');
@@ -196,18 +221,27 @@ export function BeforeAfterShowcase() {
   const [showHotspots, setShowHotspots] = useState<boolean>(true);
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [zoomFit, setZoomFit] = useState<'contain' | 'cover' | 'actual'>('contain');
+  const [lightboxOpen, setLightboxOpen] = useState<boolean>(false);
+  const [lightboxLayer, setLightboxLayer] = useState<'before' | 'after'>('after');
 
-  // Screenshots data store: { [screenKey]: { before?: string; after?: string; beforeName?: string; afterName?: string } }
+  // Screenshots data store: pre-populate with DEFAULT_SCREENSHOTS
   const [screenshots, setScreenshots] = useState<
     Record<string, { before?: string; after?: string; beforeName?: string; afterName?: string }>
   >(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(STORAGE_KEY_FALLBACK);
-      if (saved) return JSON.parse(saved);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        return {
+          course: { ...DEFAULT_SCREENSHOTS.course, ...(parsed.course || {}) },
+          tech: { ...DEFAULT_SCREENSHOTS.tech, ...(parsed.tech || {}) },
+          home: { ...DEFAULT_SCREENSHOTS.home, ...(parsed.home || {}) }
+        };
+      }
     } catch {
       // ignore
     }
-    return {};
+    return { ...DEFAULT_SCREENSHOTS };
   });
 
   // Active target for modal or quick upload: 'before' | 'after'
@@ -228,12 +262,11 @@ export function BeforeAfterShowcase() {
     }
   }, [screenshots]);
 
-  // Attempt automatic detection of local static files in /public (Course.png, Tech.png, Home.png)
+  // Attempt automatic detection of local static files in /public
   useEffect(() => {
     SCREENS.forEach((scr) => {
       const checkCandidate = (url: string, layer: 'after' | 'before') => {
-        // Only probe if not already set by user
-        if (screenshots[scr.id]?.[layer]) return;
+        // Only probe if not already set or if using default placeholder
         const img = new Image();
         img.onload = () => {
           setScreenshots((prev) => ({
@@ -241,50 +274,32 @@ export function BeforeAfterShowcase() {
             [scr.id]: {
               ...prev[scr.id],
               [layer]: url,
-              [`${layer}Name`]: url.replace('/', '')
+              [`${layer}Name`]: url.split('/').pop() || url
             }
           }));
         };
         img.src = url;
       };
 
-      // Probe primary filename, projects folder paths, and exact Windows folder names
-      const afterNameMap: Record<ScreenKey, string> = {
-        course: 'After-Course.png',
-        tech: 'After-Tech.png',
-        home: 'After-Home.png'
+      const afterNameMap: Record<ScreenKey, string[]> = {
+        course: ['After-Course.webp', 'Course.webp', 'After-Course.png', 'Course.png'],
+        tech: ['After-Tech.webp', 'Tech.webp', 'After-Tech.png', 'Tech.png'],
+        home: ['After-Home.webp', 'Home.webp', 'After-Home.png', 'Home.png']
       };
 
-      const beforeNameMap: Record<ScreenKey, string> = {
-        course: 'Before-Course.png',
-        tech: 'Before-Tech Course.png',
-        home: 'Before-Home - Navigation.png'
+      const beforeNameMap: Record<ScreenKey, string[]> = {
+        course: ['Before-Course.webp', 'Course_before.webp', 'Before-Course.png', 'Course_before.png'],
+        tech: ['Before-Tech-Course.webp', 'Before-Tech Course.webp', 'Tech_before.webp', 'Before-Tech Course.png'],
+        home: ['Home-Navigation.webp', 'Before-Home.webp', 'Home_before.webp', 'Home - Navigation.webp']
       };
 
-      const candidatesAfter = [
-        `/projects/koenig/${afterNameMap[scr.id]}`,
-        `/projects/${afterNameMap[scr.id]}`,
-        `/${afterNameMap[scr.id]}`,
-        `/projects/koenig/${scr.fileName}`,
-        `/projects/${scr.fileName}`,
-        `/projects/koenig/${scr.id}.png`,
-        `/projects/${scr.id}.png`,
-        `/${scr.fileName}`,
-        `/${scr.id}.png`
-      ];
-      candidatesAfter.forEach((url) => checkCandidate(url, 'after'));
+      afterNameMap[scr.id].forEach((fn) => {
+        checkCandidate(`/projects/koenig/${fn}`, 'after');
+      });
 
-      const candidatesBefore = [
-        `/projects/koenig/${beforeNameMap[scr.id]}`,
-        `/projects/${beforeNameMap[scr.id]}`,
-        `/${beforeNameMap[scr.id]}`,
-        `/projects/koenig/${scr.id}_before.png`,
-        `/projects/koenig/before_${scr.id}.png`,
-        `/projects/${scr.id}_before.png`,
-        `/${scr.id}_before.png`,
-        `/${scr.id}_legacy.png`
-      ];
-      candidatesBefore.forEach((url) => checkCandidate(url, 'before'));
+      beforeNameMap[scr.id].forEach((fn) => {
+        checkCandidate(`/projects/koenig/${fn}`, 'before');
+      });
     });
   }, []);
 
@@ -598,8 +613,14 @@ export function BeforeAfterShowcase() {
                     )}
                   </span>
 
-                  <span className="text-[10px] text-neutral-400">
-                    {hasBefore ? 'Before: custom' : 'Before: legacy spec'}
+                  <span className="text-[10px]">
+                    {hasBefore ? (
+                      <span className="text-emerald-700 font-semibold flex items-center gap-1">
+                        <CheckCircle2 className="w-2.5 h-2.5 text-emerald-600" /> Legacy Loaded
+                      </span>
+                    ) : (
+                      <span className="text-neutral-400">Before: legacy spec</span>
+                    )}
                   </span>
                 </div>
               </div>
@@ -680,6 +701,19 @@ export function BeforeAfterShowcase() {
           >
             <Maximize2 className="w-3.5 h-3.5 text-neutral-600" />
             <span className="hidden lg:inline">{zoomFit === 'contain' ? 'Fit' : 'Fill'}</span>
+          </button>
+
+          {/* Fullscreen / High-Res Lightbox */}
+          <button
+            onClick={() => {
+              setLightboxLayer('after');
+              setLightboxOpen(true);
+            }}
+            className="p-2 bg-gradient-to-r from-blue-600 to-[#0694D1] hover:from-blue-700 hover:to-[#057aa8] text-white border border-transparent rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all shadow-xs"
+            title="Inspect Fullscreen (100% Detail)"
+          >
+            <ZoomIn className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">Zoom HD</span>
           </button>
         </div>
       </div>
@@ -1036,6 +1070,90 @@ export function BeforeAfterShowcase() {
               </div>
               <p className="text-neutral-700 leading-relaxed pl-3.5">{selectedHotspot.redesignSolution}</p>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Fullscreen / High-Resolution Lightbox Modal */}
+      {lightboxOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-neutral-950/95 backdrop-blur-md flex flex-col animate-fade-in"
+          onClick={() => setLightboxOpen(false)}
+        >
+          {/* Lightbox Header */}
+          <div
+            className="flex items-center justify-between px-4 sm:px-6 py-3.5 bg-neutral-900 border-b border-neutral-800 text-white shrink-0"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center gap-3">
+              <span className="font-bold text-sm sm:text-base text-white">
+                {currentScreenConfig.label}
+              </span>
+              <span className="text-xs font-mono text-neutral-400 hidden sm:inline">
+                {lightboxLayer === 'after' ? activeAfterName : activeBeforeName}
+              </span>
+            </div>
+
+            {/* Middle Switcher: Before vs After */}
+            <div className="flex items-center bg-neutral-800 p-1 rounded-xl border border-neutral-700 text-xs">
+              <button
+                onClick={() => setLightboxLayer('before')}
+                className={`px-3 py-1 rounded-lg font-bold transition-all ${
+                  lightboxLayer === 'before'
+                    ? 'bg-rose-600 text-white shadow-xs'
+                    : 'text-neutral-400 hover:text-white'
+                }`}
+              >
+                Legacy (Before)
+              </button>
+              <button
+                onClick={() => setLightboxLayer('after')}
+                className={`px-3 py-1 rounded-lg font-bold transition-all ${
+                  lightboxLayer === 'after'
+                    ? 'bg-[#0694D1] text-white shadow-xs'
+                    : 'text-neutral-400 hover:text-white'
+                }`}
+              >
+                Redesigned (After)
+              </button>
+            </div>
+
+            {/* Close Button */}
+            <button
+              onClick={() => setLightboxOpen(false)}
+              className="p-2 text-neutral-400 hover:text-white bg-neutral-800 hover:bg-neutral-700 rounded-xl transition-all"
+              title="Close Fullscreen (Esc)"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Lightbox Content Image Container with Smooth Scroll */}
+          <div
+            className="flex-1 overflow-auto p-4 sm:p-8 flex justify-center items-start"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {lightboxLayer === 'after' ? (
+              activeAfterImage ? (
+                <img
+                  src={activeAfterImage}
+                  alt={`${currentScreenConfig.label} High-Res Redesign`}
+                  referrerPolicy="no-referrer"
+                  className="max-w-full h-auto rounded-xl shadow-2xl border border-neutral-800"
+                />
+              ) : (
+                <div className="text-neutral-400 text-sm py-20">No image available</div>
+              )
+            ) : activeBeforeImage ? (
+              <img
+                src={activeBeforeImage}
+                alt={`${currentScreenConfig.label} High-Res Legacy`}
+                referrerPolicy="no-referrer"
+                className="max-w-full h-auto rounded-xl shadow-2xl border border-neutral-800"
+              />
+            ) : (
+              <div className="text-neutral-400 text-sm py-20">No image available</div>
+            )}
           </div>
         </div>
       )}

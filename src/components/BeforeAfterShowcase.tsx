@@ -475,34 +475,35 @@ export function BeforeAfterShowcase() {
         className="hidden"
       />
 
-      {/* Top Header Section with Clean Screen Switcher */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-blue-100/80 pb-6">
-        <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-[#0694D1] text-xs font-bold rounded-full border border-blue-200/60 mb-2">
-            <Sliders className="w-3.5 h-3.5" />
-            <span>Interactive UX Showcase • Screen-by-Screen Evolution</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
-            Before & After: Interface Evolution
-          </h2>
-          <p className="text-xs sm:text-sm text-neutral-600 mt-1 max-w-2xl leading-relaxed">
-            Direct visual comparison of Koenig Solutions' legacy pages against the redesigned UX system.
-            Explore the transformation using the interactive split slider, side-by-side comparison, or toggle mode with annotated UX rationale pins.
-          </p>
+      {/* Top Header Section */}
+      <div className="border-b border-blue-100/80 pb-5">
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-[#0694D1] text-xs font-bold rounded-full border border-blue-200/60 mb-2">
+          <Sliders className="w-3.5 h-3.5" />
+          <span>Interactive UX Showcase • Screen-by-Screen Evolution</span>
         </div>
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
+          Before & After: Interface Evolution
+        </h2>
+        <p className="text-xs sm:text-sm text-neutral-600 mt-1 max-w-2xl leading-relaxed">
+          Direct visual comparison of Koenig Solutions' legacy pages against the redesigned UX system.
+          Explore the transformation with annotated UX rationale pins in side-by-side view.
+        </p>
+      </div>
 
-        {/* Clean Screen Switcher Segmented Tabs */}
-        <div className="flex flex-wrap items-center gap-1.5 bg-neutral-100/80 p-1.5 rounded-2xl border border-neutral-200/80 self-start lg:self-center">
+      {/* Clean Screen Switcher Tabs - Directly above the screens */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
+        {/* Screen Tabs */}
+        <div className="inline-flex items-center gap-1 bg-neutral-100/90 p-1.5 rounded-2xl border border-neutral-200/80 overflow-x-auto max-w-full shadow-xs">
           {SCREENS.map((scr) => {
             const isSelected = activeScreen === scr.id;
             return (
               <button
                 key={scr.id}
                 onClick={() => setActiveScreen(scr.id)}
-                className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap flex items-center gap-2 ${
                   isSelected
                     ? 'bg-[#0694D1] text-white shadow-xs'
-                    : 'text-neutral-700 hover:text-neutral-900 hover:bg-white/80'
+                    : 'text-neutral-700 hover:text-neutral-950 hover:bg-white/80'
                 }`}
               >
                 <span>{scr.label}</span>
@@ -510,23 +511,8 @@ export function BeforeAfterShowcase() {
             );
           })}
         </div>
-      </div>
 
-      {/* Screen Metadata & View Controls Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-neutral-50 p-3 sm:p-4 rounded-2xl border border-neutral-200">
-        <div className="space-y-0.5">
-          <div className="flex items-center gap-2">
-            <span className="text-sm font-bold text-neutral-900">{currentScreenConfig.pageTitle}</span>
-            <span className="text-[10px] font-mono text-neutral-400 hidden md:inline">
-              https://{currentScreenConfig.url}
-            </span>
-          </div>
-          <p className="text-xs text-neutral-600 leading-relaxed max-w-2xl">
-            {currentScreenConfig.summary}
-          </p>
-        </div>
-
-        {/* View Mode Controls */}
+        {/* View Tools / Controls */}
         <div className="flex flex-wrap items-center gap-2 shrink-0">
           {/* Side-by-Side Badge */}
           <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0694D1]/10 border border-[#0694D1]/30 text-[#0694D1] rounded-xl text-xs font-bold shadow-xs">
@@ -571,6 +557,19 @@ export function BeforeAfterShowcase() {
             <span className="hidden sm:inline">Zoom HD</span>
           </button>
         </div>
+      </div>
+
+      {/* Screen Metadata Bar */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-neutral-50 px-4 py-2.5 rounded-xl border border-neutral-200 text-xs">
+        <div className="flex items-center gap-2 flex-wrap">
+          <span className="font-bold text-neutral-900">{currentScreenConfig.pageTitle}</span>
+          <span className="text-[11px] font-mono text-neutral-400">
+            https://{currentScreenConfig.url}
+          </span>
+        </div>
+        <p className="text-neutral-600 text-[11px] max-w-xl truncate">
+          {currentScreenConfig.summary}
+        </p>
       </div>
 
       {/* Main Comparison Canvas Frame */}

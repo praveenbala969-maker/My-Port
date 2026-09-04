@@ -566,27 +566,27 @@ export function BeforeAfterShowcase() {
               </div>
 
               {/* Scrollable image area with scrollbar on right */}
-              <div className="relative flex-1 overflow-y-auto overflow-x-hidden p-3 custom-scrollbar">
+              <div className="relative flex-1 overflow-y-auto overflow-x-hidden p-0 custom-scrollbar">
                 {activeBeforeImage ? (
                   <img
                     src={activeBeforeImage}
                     alt="Legacy Screenshot"
                     referrerPolicy="no-referrer"
-                    className={`w-full ${
-                      zoomFit === 'contain' ? 'h-auto object-contain' : 'min-h-full object-cover'
-                    } object-top rounded-lg shadow-md`}
+                    className="w-full h-auto object-top block"
                   />
                 ) : (
-                  <LegacyWireframeFallback
-                    screen={activeScreen}
-                    fileName={currentScreenConfig.fileName}
-                    onUploadClick={() => {
-                      setUploadTargetLayer('before');
-                      fileInputRef.current?.click();
-                    }}
-                    onDrop={(e) => handleDropIntoStage(e, 'before')}
-                    onDragOver={handleDragOver}
-                  />
+                  <div className="p-3">
+                    <LegacyWireframeFallback
+                      screen={activeScreen}
+                      fileName={currentScreenConfig.fileName}
+                      onUploadClick={() => {
+                        setUploadTargetLayer('before');
+                        fileInputRef.current?.click();
+                      }}
+                      onDrop={(e) => handleDropIntoStage(e, 'before')}
+                      onDragOver={handleDragOver}
+                    />
+                  </div>
                 )}
               </div>
             </div>
@@ -602,16 +602,14 @@ export function BeforeAfterShowcase() {
               </div>
 
               {/* Scrollable image area with scrollbar on right */}
-              <div className="relative flex-1 overflow-y-auto overflow-x-hidden p-3 custom-scrollbar">
+              <div className="relative flex-1 overflow-y-auto overflow-x-hidden p-0 custom-scrollbar">
                 {activeAfterImage ? (
                   <div className="relative w-full">
                     <img
                       src={activeAfterImage}
                       alt="Redesigned Screenshot"
                       referrerPolicy="no-referrer"
-                      className={`w-full ${
-                        zoomFit === 'contain' ? 'h-auto object-contain' : 'min-h-full object-cover'
-                      } object-top rounded-lg shadow-md`}
+                      className="w-full h-auto object-top block"
                     />
 
                     {/* Hotspot callout pins on the redesigned image */}

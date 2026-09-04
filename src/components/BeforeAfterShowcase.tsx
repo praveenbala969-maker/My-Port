@@ -563,14 +563,6 @@ export function BeforeAfterShowcase() {
                   <span className="w-2 h-2 rounded-full bg-rose-500" />
                   Legacy Experience (Before)
                 </span>
-                {activeBeforeImage && (
-                  <button
-                    onClick={() => clearScreenshot(activeScreen, 'before')}
-                    className="text-[10px] text-neutral-400 hover:text-rose-400 flex items-center gap-1"
-                  >
-                    <Trash2 className="w-3 h-3" /> Remove
-                  </button>
-                )}
               </div>
 
               {/* Scrollable image area with scrollbar on right */}
@@ -607,14 +599,6 @@ export function BeforeAfterShowcase() {
                   <span className="w-2 h-2 rounded-full bg-[#0694D1]" />
                   Redesigned Experience
                 </span>
-                {activeAfterImage && (
-                  <button
-                    onClick={() => clearScreenshot(activeScreen, 'after')}
-                    className="text-[10px] text-neutral-400 hover:text-rose-400 flex items-center gap-1"
-                  >
-                    <Trash2 className="w-3 h-3" /> Remove
-                  </button>
-                )}
               </div>
 
               {/* Scrollable image area with scrollbar on right */}

@@ -475,7 +475,7 @@ export function BeforeAfterShowcase() {
         className="hidden"
       />
 
-      {/* Top Header Section */}
+      {/* Top Header Section with Clean Screen Switcher */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-blue-100/80 pb-6">
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-[#0694D1] text-xs font-bold rounded-full border border-blue-200/60 mb-2">
@@ -487,143 +487,26 @@ export function BeforeAfterShowcase() {
           </h2>
           <p className="text-xs sm:text-sm text-neutral-600 mt-1 max-w-2xl leading-relaxed">
             Direct visual comparison of Koenig Solutions' legacy pages against the redesigned UX system.
-            Review your exact screenshots (<code className="font-mono text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded">Course.png</code>, <code className="font-mono text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded">Tech.png</code>, <code className="font-mono text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded">Home.png</code>) with interactive split slider and annotated UX rationale pins.
+            Explore the transformation using the interactive split slider, side-by-side comparison, or toggle mode with annotated UX rationale pins.
           </p>
         </div>
 
-        {/* 3 Page Switcher Buttons */}
-        <div className="flex flex-wrap items-center gap-1.5 bg-blue-50/80 p-1.5 rounded-2xl border border-blue-100 self-start lg:self-center">
+        {/* Clean Screen Switcher Segmented Tabs */}
+        <div className="flex flex-wrap items-center gap-1.5 bg-neutral-100/80 p-1.5 rounded-2xl border border-neutral-200/80 self-start lg:self-center">
           {SCREENS.map((scr) => {
-            const hasAfter = Boolean(screenshots[scr.id]?.after);
+            const isSelected = activeScreen === scr.id;
             return (
               <button
                 key={scr.id}
                 onClick={() => setActiveScreen(scr.id)}
-                className={`px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
-                  activeScreen === scr.id
+                className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                  isSelected
                     ? 'bg-[#0694D1] text-white shadow-xs'
-                    : 'text-neutral-700 hover:text-[#0694D1] hover:bg-white/70'
+                    : 'text-neutral-700 hover:text-neutral-900 hover:bg-white/80'
                 }`}
               >
                 <span>{scr.label}</span>
-                <span
-                  className={`text-[9px] px-1.5 py-0.2 font-mono rounded-md ${
-                    activeScreen === scr.id
-                      ? 'bg-white/20 text-white'
-                      : hasAfter
-                      ? 'bg-emerald-100 text-emerald-800'
-                      : 'bg-neutral-200 text-neutral-600'
-                  }`}
-                >
-                  {scr.fileName}
-                </span>
               </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Screenshot Manager & Upload Tray Banner */}
-      <div
-        onDrop={(e) => handleDropIntoStage(e, 'after')}
-        onDragOver={handleDragOver}
-        className="bg-[#f8fafc] border-2 border-dashed border-blue-200 hover:border-[#0694D1] rounded-2xl p-4 space-y-3 transition-colors"
-      >
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
-            <FileImage className="w-4 h-4 text-[#0694D1]" />
-            <span className="text-xs font-bold text-neutral-900">
-              Screenshots Loaded for <span className="text-[#0694D1]">{currentScreenConfig.label}</span> ({currentScreenConfig.fileName})
-            </span>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-2">
-            <button
-              onClick={() => {
-                fileInputRef.current?.click();
-              }}
-              className="px-3.5 py-1.5 bg-gradient-to-r from-blue-600 to-[#0694D1] hover:from-blue-700 hover:to-[#057aa8] text-white text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 shadow-sm"
-              title="Select all 6 files from your Images folder at once (Course, Tech, Home - Before & After)"
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Select All 6 Images from Folder</span>
-            </button>
-            <button
-              onClick={() => {
-                setUploadTargetLayer('after');
-                fileInputRef.current?.click();
-              }}
-              className="px-3 py-1.5 bg-[#0694D1] hover:bg-[#057aa8] text-white text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 shadow-xs"
-            >
-              <Upload className="w-3.5 h-3.5" />
-              <span>Upload {currentScreenConfig.fileName}</span>
-            </button>
-            <button
-              onClick={() => {
-                setUploadTargetLayer('before');
-                fileInputRef.current?.click();
-              }}
-              className="px-3 py-1.5 bg-neutral-100 hover:bg-neutral-200 text-neutral-700 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5"
-            >
-              <Upload className="w-3.5 h-3.5 text-neutral-500" />
-              <span>Upload Before (Legacy)</span>
-            </button>
-          </div>
-        </div>
-
-        <div className="text-[11px] text-slate-500 flex items-center gap-1.5 bg-blue-50/60 px-3 py-1.5 rounded-lg border border-blue-100">
-          <span className="font-semibold text-blue-900">Pro Tip:</span>
-          <span>You can select or drag all 6 files (<code className="font-mono text-blue-700">Before-Course.png</code>, <code className="font-mono text-blue-700">After-Course.png</code>, <code className="font-mono text-blue-700">Before-Tech Course.png</code>, <code className="font-mono text-blue-700">After-Tech.png</code>, etc.) here at once — they will auto-sort into each screen!</span>
-        </div>
-
-        {/* Status Indicators for the 3 Screens */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 pt-1">
-          {SCREENS.map((scr) => {
-            const hasAfter = Boolean(screenshots[scr.id]?.after);
-            const hasBefore = Boolean(screenshots[scr.id]?.before);
-            const isSelected = activeScreen === scr.id;
-
-            return (
-              <div
-                key={scr.id}
-                onClick={() => setActiveScreen(scr.id)}
-                className={`p-2.5 rounded-xl border text-xs cursor-pointer transition-all ${
-                  isSelected
-                    ? 'bg-white border-[#0694D1] shadow-xs ring-2 ring-blue-100'
-                    : 'bg-white/60 border-neutral-200 hover:bg-white'
-                }`}
-              >
-                <div className="flex items-center justify-between font-bold text-neutral-900 mb-1">
-                  <span className="truncate">{scr.label}</span>
-                  <span className="text-[10px] font-mono text-[#0694D1] bg-blue-50 px-1.5 py-0.5 rounded">
-                    {scr.fileName}
-                  </span>
-                </div>
-
-                <div className="flex items-center justify-between text-[11px] text-neutral-500">
-                  <span className="flex items-center gap-1">
-                    {hasAfter ? (
-                      <span className="text-emerald-700 font-semibold flex items-center gap-1">
-                        <CheckCircle2 className="w-3 h-3 text-emerald-600" /> Redesign Ready
-                      </span>
-                    ) : (
-                      <span className="text-amber-700 font-medium flex items-center gap-1">
-                        <AlertCircle className="w-3 h-3 text-amber-500" /> Click to Add SS
-                      </span>
-                    )}
-                  </span>
-
-                  <span className="text-[10px]">
-                    {hasBefore ? (
-                      <span className="text-emerald-700 font-semibold flex items-center gap-1">
-                        <CheckCircle2 className="w-2.5 h-2.5 text-emerald-600" /> Legacy Loaded
-                      </span>
-                    ) : (
-                      <span className="text-neutral-400">Before: legacy spec</span>
-                    )}
-                  </span>
-                </div>
-              </div>
             );
           })}
         </div>
@@ -644,7 +527,7 @@ export function BeforeAfterShowcase() {
         </div>
 
         {/* View Mode Controls */}
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex flex-wrap items-center gap-2 shrink-0">
           {/* Slider vs Side-by-Side vs Toggle */}
           <div className="flex bg-white p-1 rounded-xl border border-neutral-200 text-xs shadow-xs">
             <button

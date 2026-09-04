@@ -57,12 +57,12 @@ export function CaseStudyDetail({ onBack, onSelectProject }: CaseStudyDetailProp
   const sections = [
     { id: 'overview', label: 'Overview' },
     { id: 'challenge', label: 'Challenge' },
+    { id: 'delivery', label: 'Handoff to Engineering' },
     { id: 'research', label: 'Research' },
     { id: 'architecture', label: 'Information Architecture' },
     { id: 'showcase', label: 'Before & After' },
     { id: 'solutions', label: 'Design Solutions' },
     { id: 'testing', label: 'Usability Testing' },
-    { id: 'delivery', label: 'Handoff Specs' },
     { id: 'impact', label: 'Business Impact' },
     { id: 'learnings', label: 'Reflections' },
   ];
@@ -349,12 +349,322 @@ export function CaseStudyDetail({ onBack, onSelectProject }: CaseStudyDetailProp
           </div>
         </section>
 
-        {/* Section 3: Research & User Personas (Mild Blue Themed Cards) */}
+        {/* Section 3: Delivery & Implementation - Handoff to Engineering */}
+        <section id="delivery" className="bg-white border border-blue-100 rounded-3xl p-6 sm:p-9 shadow-xs space-y-12 scroll-mt-20">
+          {/* Top Handoff Specs Header & Annotation Cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            {/* Left Column Text */}
+            <div className="lg:col-span-5 space-y-4">
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center">
+                  <Sparkles className="w-3.5 h-3.5" />
+                </div>
+                <span className="text-xs font-bold tracking-widest text-blue-600 uppercase">
+                  DELIVERY & IMPLEMENTATION
+                </span>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight flex items-center gap-2.5">
+                <span className="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center text-sm font-bold">
+                  3
+                </span>
+                Handoff to Engineering
+              </h2>
+
+              <p className="text-sm sm:text-base text-neutral-600 leading-relaxed">
+                I prepared and led the comprehensive engineering handoff, translating high-level experience goals into rigorous design system specs, responsive layout matrices, and interactive behavior rules.
+              </p>
+
+              <p className="text-sm sm:text-base text-neutral-600 leading-relaxed">
+                The handoff documented user flows across all four platform learning levels, component token usage, design decision rationale (not just pixel dimensions), and micro-interaction guidance for state changes, asynchronous course filters, and multi-step form validation.
+              </p>
+
+              <div className="pt-2 flex flex-wrap gap-2">
+                <span className="px-3 py-1 bg-blue-50 text-blue-800 text-xs font-semibold rounded-full border border-blue-100">
+                  GT Walsheim Pro Typography
+                </span>
+                <span className="px-3 py-1 bg-blue-50 text-blue-800 text-xs font-semibold rounded-full border border-blue-100">
+                  #0694D1 Primary Token Matrix
+                </span>
+                <span className="px-3 py-1 bg-blue-50 text-blue-800 text-xs font-semibold rounded-full border border-blue-100">
+                  16px Card Elevation System
+                </span>
+                <span className="px-3 py-1 bg-blue-50 text-blue-800 text-xs font-semibold rounded-full border border-blue-100">
+                  Interactive Button States
+                </span>
+              </div>
+            </div>
+
+            {/* Right Column: Exact Koenig Style Guide & Component Specification Card */}
+            <div className="lg:col-span-7 bg-white border border-slate-200 rounded-3xl p-5 sm:p-6 shadow-lg space-y-5">
+              {/* Style Guide Header */}
+              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-black tracking-tight text-[#0694D1]">KOENIG</span>
+                  <span className="text-[10px] uppercase font-semibold text-slate-400 tracking-wider">step forward</span>
+                </div>
+                <div className="text-xs font-bold text-slate-800 uppercase tracking-wider bg-slate-100 px-2.5 py-1 rounded-md">
+                  Style Guide & Specs
+                </div>
+              </div>
+
+              {/* 1. Official Color Palette Swatches */}
+              <div className="space-y-2">
+                <div className="text-[11px] font-bold uppercase tracking-wider text-slate-600">
+                  Primary & Secondary Palette
+                </div>
+                <div className="grid grid-cols-5 gap-2">
+                  <div className="space-y-1 text-center">
+                    <div className="h-10 rounded-lg shadow-xs border border-slate-200 bg-[#0694D1]" />
+                    <div className="text-[9px] font-mono text-slate-700 font-bold">#0694D1</div>
+                    <div className="text-[8px] text-slate-400">Primary Blue</div>
+                  </div>
+                  <div className="space-y-1 text-center">
+                    <div className="h-10 rounded-lg shadow-xs border border-slate-200 bg-[#485058]" />
+                    <div className="text-[9px] font-mono text-slate-700 font-bold">#485058</div>
+                    <div className="text-[8px] text-slate-400">Slate Charcoal</div>
+                  </div>
+                  <div className="space-y-1 text-center">
+                    <div className="h-10 rounded-lg shadow-xs border border-slate-200 bg-[#22262A]" />
+                    <div className="text-[9px] font-mono text-slate-700 font-bold">#22262A</div>
+                    <div className="text-[8px] text-slate-400">Dark Onyx</div>
+                  </div>
+                  <div className="space-y-1 text-center">
+                    <div className="h-10 rounded-lg shadow-xs border border-slate-200 bg-[#F0F4FF]" />
+                    <div className="text-[9px] font-mono text-slate-700 font-bold">#F0F4FF</div>
+                    <div className="text-[8px] text-slate-400">Ice Tint</div>
+                  </div>
+                  <div className="space-y-1 text-center">
+                    <div className="h-10 rounded-lg shadow-xs border border-slate-200 bg-[#083146]" />
+                    <div className="text-[9px] font-mono text-slate-700 font-bold">#083146</div>
+                    <div className="text-[8px] text-slate-400">Deep Navy</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 2. Typography Token Scale (GT Walsheim Pro) */}
+              <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-xl space-y-2">
+                <div className="flex items-center justify-between text-[11px] font-bold text-slate-700">
+                  <span>Typography: GT Walsheim Pro</span>
+                  <span className="text-[10px] text-[#0694D1] font-mono">Type • Weight • Size</span>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[10px]">
+                  <div className="p-1.5 bg-white rounded border border-slate-200">
+                    <div className="font-bold text-slate-900">Headline 1 / 2</div>
+                    <div className="text-slate-500 text-[9px]">Medium/Bold • 60 / 40px</div>
+                  </div>
+                  <div className="p-1.5 bg-white rounded border border-slate-200">
+                    <div className="font-bold text-slate-900">Headline 3</div>
+                    <div className="text-slate-500 text-[9px]">Medium • 38px</div>
+                  </div>
+                  <div className="p-1.5 bg-white rounded border border-slate-200">
+                    <div className="font-bold text-slate-900">Title 1 / 2</div>
+                    <div className="text-slate-500 text-[9px]">Medium • 28 / 22px</div>
+                  </div>
+                  <div className="p-1.5 bg-white rounded border border-slate-200">
+                    <div className="font-bold text-slate-900">Body 1 / 2 / 3</div>
+                    <div className="text-slate-500 text-[9px]">Regular • 18 / 16 / 14px</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 3. Interactive Component States & Elevation Specs */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                {/* Button States Matrix */}
+                <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+                  <div className="text-[10px] font-bold text-slate-700 uppercase tracking-wider">
+                    Button States (40px/48px)
+                  </div>
+                  <div className="space-y-1.5 text-[10px]">
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-500">Default:</span>
+                      <span className="px-3 py-1 bg-[#0694D1] text-white font-semibold rounded-full shadow-xs">
+                        More Webinars
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-500">Hover:</span>
+                      <span className="px-3 py-1 bg-[#083146] text-white font-semibold rounded-full shadow-xs">
+                        More Webinars
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-500">Outline:</span>
+                      <span className="px-3 py-0.5 border border-[#0694D1] text-[#0694D1] font-semibold rounded-full">
+                        Register
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Drop Shadows & Form Field Specs */}
+                <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+                  <div className="text-[10px] font-bold text-slate-700 uppercase tracking-wider">
+                    Shadow & Elevation Matrix
+                  </div>
+                  <div className="space-y-1 text-[9px] text-slate-600 font-mono">
+                    <div className="p-1.5 bg-white rounded border border-slate-200 shadow-[0px_4px_16px_rgba(104,131,151,0.25)]">
+                      <div className="font-bold text-slate-800">Primary Default:</div>
+                      <div>radius: 16px • 0px 4px 16px rgba(104,131,151,0.25)</div>
+                    </div>
+                    <div className="p-1.5 bg-white rounded border border-slate-200 shadow-[0px_8px_32px_rgba(104,131,151,0.35)]">
+                      <div className="font-bold text-slate-800">Secondary Hover:</div>
+                      <div>radius: 16px • 0px 8px 32px rgba(104,131,151,0.35)</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Responsive Multi-Device Lineup Banner */}
+          <div className="relative rounded-3xl sm:rounded-[36px] bg-gradient-to-b from-[#f8fafc] via-[#f0f6ff] to-[#e2e8f0] p-6 sm:p-10 lg:p-14 overflow-hidden border border-blue-100 shadow-xl">
+            {/* Directional Chevron Background Backdrop (Mild Blue Tint) */}
+            <div className="absolute inset-0 flex items-center justify-between opacity-15 pointer-events-none overflow-hidden select-none">
+              {[...Array(14)].map((_, i) => (
+                <div key={i} className="text-blue-500 font-black text-4xl sm:text-6xl tracking-tighter transform -skew-x-12">
+                  &gt;&gt;
+                </div>
+              ))}
+            </div>
+
+            <div className="relative z-10 text-center mb-8 sm:mb-12">
+              <div className="inline-block px-3 py-1 bg-white/80 backdrop-blur-sm border border-blue-200 rounded-full text-xs font-bold text-blue-800 uppercase tracking-wider mb-2">
+                Responsive Cross-Platform Lineup
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-neutral-900">
+                Fluid Experience Architecture Across Desktop, Tablet & Mobile
+              </h3>
+            </div>
+
+            {/* 5-Device Stage: Mobile Phone, Tablet, Laptop (Center), Tablet, Mobile Phone */}
+            <div className="relative z-10 flex items-end justify-center gap-2 sm:gap-4 lg:gap-6 max-w-6xl mx-auto pt-4">
+              {/* 1. Far Left: Mobile Smartphone Mockup */}
+              <div className="w-20 sm:w-28 lg:w-36 shrink-0 bg-neutral-950 p-1.5 sm:p-2 rounded-[22px] sm:rounded-[30px] shadow-2xl border-2 border-neutral-800 transition-transform hover:-translate-y-2 duration-300">
+                <div className="bg-slate-900 rounded-[18px] sm:rounded-[24px] overflow-hidden p-2 text-white text-[7px] sm:text-[9px] space-y-1">
+                  <div className="flex justify-between items-center border-b border-slate-800 pb-1">
+                    <span className="font-bold text-sky-400">Koenig</span>
+                    <span className="text-[6px] sm:text-[8px] bg-blue-600 px-1 rounded">1-on-1</span>
+                  </div>
+                  <div className="bg-slate-800 p-1.5 rounded space-y-0.5">
+                    <div className="font-bold text-white">Book Expert</div>
+                    <div className="text-[6px] text-slate-400">Select date & slot</div>
+                  </div>
+                  <div className="bg-blue-600 text-white font-bold text-center py-1 rounded text-[7px]">
+                    Confirm Slot
+                  </div>
+                </div>
+              </div>
+
+              {/* 2. Left Center: Tablet / iPad Mockup */}
+              <div className="hidden sm:block w-36 lg:w-48 shrink-0 bg-neutral-950 p-2 sm:p-2.5 rounded-[24px] sm:rounded-[32px] shadow-2xl border-2 border-neutral-800 transition-transform hover:-translate-y-2 duration-300">
+                <div className="bg-slate-900 rounded-[20px] sm:rounded-[26px] overflow-hidden p-2.5 text-white text-[8px] sm:text-[10px] space-y-1.5">
+                  <div className="flex justify-between items-center border-b border-slate-800 pb-1">
+                    <span className="font-bold text-sky-400">Koenig Help Center</span>
+                    <span className="text-[7px] text-slate-400">Live Support</span>
+                  </div>
+                  <div className="bg-slate-800/90 p-2 rounded space-y-1">
+                    <div className="text-[8px] font-bold text-white">Talk to a Lead Instructor</div>
+                    <div className="grid grid-cols-2 gap-1 text-[7px] text-slate-300">
+                      <div className="bg-slate-700/60 p-1 rounded">Cloud Track</div>
+                      <div className="bg-slate-700/60 p-1 rounded">Security Track</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 3. Center: MacBook / Laptop Main Frame */}
+              <div className="w-56 sm:w-80 lg:w-[460px] shrink-0 bg-neutral-900 p-2 sm:p-3 rounded-2xl sm:rounded-3xl shadow-2xl border-2 sm:border-4 border-neutral-700 transition-transform hover:-translate-y-3 duration-300">
+                {/* Screen Top Bar */}
+                <div className="flex items-center gap-1.5 pb-1.5 border-b border-neutral-800 px-1">
+                  <div className="w-2 h-2 rounded-full bg-blue-500" />
+                  <div className="w-2 h-2 rounded-full bg-blue-400" />
+                  <div className="w-2 h-2 rounded-full bg-blue-300" />
+                  <div className="ml-2 bg-neutral-800 rounded px-2 py-0.5 text-[8px] sm:text-[10px] text-neutral-300 font-mono flex-1 text-center truncate">
+                    koenig-solutions.com/portal
+                  </div>
+                </div>
+
+                {/* Laptop Screen UI */}
+                <div className="bg-slate-950 p-2.5 sm:p-4 rounded-xl text-white space-y-2 sm:space-y-3">
+                  <div className="flex justify-between items-center">
+                    <div className="font-black text-xs sm:text-sm text-sky-400 tracking-tight">KOENIG</div>
+                    <div className="bg-slate-900 border border-slate-800 px-2 py-0.5 rounded text-[8px] sm:text-[10px] text-slate-300">
+                      🔍 Search 5,000+ IT Certifications...
+                    </div>
+                  </div>
+
+                  <div className="bg-gradient-to-r from-blue-900/60 to-slate-900 p-2 sm:p-3 rounded-lg border border-blue-800/40">
+                    <div className="text-[10px] sm:text-xs font-bold text-white">
+                      Accelerate Your Tech Career with 1-on-1 Training
+                    </div>
+                    <div className="text-[8px] sm:text-[9px] text-blue-200 mt-0.5">
+                      Authorized official training for AWS, Microsoft, Cisco & Google Cloud
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-1.5">
+                    <div className="bg-slate-900 border border-slate-800 p-1.5 rounded text-center">
+                      <div className="text-[8px] sm:text-[9px] font-bold text-sky-400">Cloud & DevOps</div>
+                      <div className="text-[7px] text-slate-400">140+ Courses</div>
+                    </div>
+                    <div className="bg-slate-900 border border-slate-800 p-1.5 rounded text-center">
+                      <div className="text-[8px] sm:text-[9px] font-bold text-sky-400">Cybersecurity</div>
+                      <div className="text-[7px] text-slate-400">85+ Courses</div>
+                    </div>
+                    <div className="bg-slate-900 border border-slate-800 p-1.5 rounded text-center">
+                      <div className="text-[8px] sm:text-[9px] font-bold text-sky-400">Data & AI</div>
+                      <div className="text-[7px] text-slate-400">60+ Courses</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Laptop Base Stand */}
+                <div className="w-20 sm:w-32 h-1 sm:h-1.5 bg-neutral-600 mx-auto mt-1 rounded-full" />
+              </div>
+
+              {/* 4. Right Center: Tablet / iPad Mockup */}
+              <div className="hidden sm:block w-36 lg:w-48 shrink-0 bg-neutral-950 p-2 sm:p-2.5 rounded-[24px] sm:rounded-[32px] shadow-2xl border-2 border-neutral-800 transition-transform hover:-translate-y-2 duration-300">
+                <div className="bg-slate-900 rounded-[20px] sm:rounded-[26px] overflow-hidden p-2.5 text-white text-[8px] sm:text-[10px] space-y-1.5">
+                  <div className="flex justify-between items-center border-b border-slate-800 pb-1">
+                    <span className="font-bold text-sky-400">Course Detail</span>
+                    <span className="text-[7px] text-slate-400">Syllabus PDF</span>
+                  </div>
+                  <div className="bg-slate-800/90 p-2 rounded space-y-1">
+                    <div className="text-[8px] font-bold text-white">AWS Solutions Architect</div>
+                    <div className="text-[7px] text-sky-400">✓ Exam Voucher Included</div>
+                    <div className="bg-blue-600 text-white text-center py-0.5 rounded text-[7px] font-bold">
+                      Book Free Demo
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 5. Far Right: Mobile Smartphone Mockup */}
+              <div className="w-20 sm:w-28 lg:w-36 shrink-0 bg-neutral-950 p-1.5 sm:p-2 rounded-[22px] sm:rounded-[30px] shadow-2xl border-2 border-neutral-800 transition-transform hover:-translate-y-2 duration-300">
+                <div className="bg-slate-900 rounded-[18px] sm:rounded-[24px] overflow-hidden p-2 text-white text-[7px] sm:text-[9px] space-y-1">
+                  <div className="flex justify-between items-center border-b border-slate-800 pb-1">
+                    <span className="font-bold text-sky-400">Success!</span>
+                    <span className="text-[6px] sm:text-[8px] text-slate-400">#KNG-4892</span>
+                  </div>
+                  <div className="bg-slate-800 p-1.5 rounded space-y-0.5 text-center">
+                    <div className="w-4 h-4 rounded-full bg-blue-500/20 text-sky-400 flex items-center justify-center mx-auto text-[8px]">✓</div>
+                    <div className="font-bold text-white text-[7px]">Booking Confirmed</div>
+                    <div className="text-[6px] text-slate-400">Calendar invite sent</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        {/* Section 4: Research & User Personas (Mild Blue Themed Cards) */}
         <section id="research" className="bg-white border border-blue-100 rounded-3xl p-6 sm:p-9 shadow-xs space-y-6">
           <div className="flex items-center justify-between flex-wrap gap-3">
             <h2 className="text-2xl font-bold text-neutral-900 tracking-tight flex items-center gap-2.5">
               <span className="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center text-sm font-bold">
-                3
+                4
               </span>
               User Research & Target Archetypes
             </h2>
@@ -442,12 +752,12 @@ export function CaseStudyDetail({ onBack, onSelectProject }: CaseStudyDetailProp
           </div>
         </section>
 
-        {/* Section 4: Information Architecture & Taxonomy */}
+        {/* Section 5: Information Architecture & Taxonomy */}
         <section id="architecture" className="bg-white border border-blue-100 rounded-3xl p-6 sm:p-9 shadow-xs space-y-6">
           <div className="flex items-center justify-between flex-wrap gap-3">
             <h2 className="text-2xl font-bold text-neutral-900 tracking-tight flex items-center gap-2.5">
               <span className="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center text-sm font-bold">
-                4
+                5
               </span>
               Information Architecture & Navigation Overhaul
             </h2>
@@ -774,318 +1084,12 @@ export function CaseStudyDetail({ onBack, onSelectProject }: CaseStudyDetailProp
           </div>
         </section>
 
-        {/* Section 8: Delivery & Implementation - Handoff to Engineering */}
-        <section id="delivery" className="bg-white border border-blue-100 rounded-3xl p-6 sm:p-9 shadow-xs space-y-12 scroll-mt-20">
-          {/* Top Handoff Specs Header & Annotation Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            {/* Left Column Text */}
-            <div className="lg:col-span-5 space-y-4">
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center">
-                  <Sparkles className="w-3.5 h-3.5" />
-                </div>
-                <span className="text-xs font-bold tracking-widest text-blue-600 uppercase">
-                  DELIVERY & IMPLEMENTATION
-                </span>
-              </div>
-
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-neutral-950 tracking-tight">
-                Handoff to Engineering
-              </h2>
-
-              <p className="text-sm sm:text-base text-neutral-600 leading-relaxed">
-                I prepared and led the comprehensive engineering handoff, translating high-level experience goals into rigorous design system specs, responsive layout matrices, and interactive behavior rules.
-              </p>
-
-              <p className="text-sm sm:text-base text-neutral-600 leading-relaxed">
-                The handoff documented user flows across all four platform learning levels, component token usage, design decision rationale (not just pixel dimensions), and micro-interaction guidance for state changes, asynchronous course filters, and multi-step form validation.
-              </p>
-
-              <div className="pt-2 flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-blue-50 text-blue-800 text-xs font-semibold rounded-full border border-blue-100">
-                  GT Walsheim Pro Typography
-                </span>
-                <span className="px-3 py-1 bg-blue-50 text-blue-800 text-xs font-semibold rounded-full border border-blue-100">
-                  #0694D1 Primary Token Matrix
-                </span>
-                <span className="px-3 py-1 bg-blue-50 text-blue-800 text-xs font-semibold rounded-full border border-blue-100">
-                  16px Card Elevation System
-                </span>
-                <span className="px-3 py-1 bg-blue-50 text-blue-800 text-xs font-semibold rounded-full border border-blue-100">
-                  Interactive Button States
-                </span>
-              </div>
-            </div>
-
-            {/* Right Column: Exact Koenig Style Guide & Component Specification Card */}
-            <div className="lg:col-span-7 bg-white border border-slate-200 rounded-3xl p-5 sm:p-6 shadow-lg space-y-5">
-              {/* Style Guide Header */}
-              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                <div className="flex items-center gap-2">
-                  <span className="text-sm font-black tracking-tight text-[#0694D1]">KOENIG</span>
-                  <span className="text-[10px] uppercase font-semibold text-slate-400 tracking-wider">step forward</span>
-                </div>
-                <div className="text-xs font-bold text-slate-800 uppercase tracking-wider bg-slate-100 px-2.5 py-1 rounded-md">
-                  Style Guide & Specs
-                </div>
-              </div>
-
-              {/* 1. Official Color Palette Swatches */}
-              <div className="space-y-2">
-                <div className="text-[11px] font-bold uppercase tracking-wider text-slate-600">
-                  Primary & Secondary Palette
-                </div>
-                <div className="grid grid-cols-5 gap-2">
-                  <div className="space-y-1 text-center">
-                    <div className="h-10 rounded-lg shadow-xs border border-slate-200 bg-[#0694D1]" />
-                    <div className="text-[9px] font-mono text-slate-700 font-bold">#0694D1</div>
-                    <div className="text-[8px] text-slate-400">Primary Blue</div>
-                  </div>
-                  <div className="space-y-1 text-center">
-                    <div className="h-10 rounded-lg shadow-xs border border-slate-200 bg-[#485058]" />
-                    <div className="text-[9px] font-mono text-slate-700 font-bold">#485058</div>
-                    <div className="text-[8px] text-slate-400">Slate Charcoal</div>
-                  </div>
-                  <div className="space-y-1 text-center">
-                    <div className="h-10 rounded-lg shadow-xs border border-slate-200 bg-[#22262A]" />
-                    <div className="text-[9px] font-mono text-slate-700 font-bold">#22262A</div>
-                    <div className="text-[8px] text-slate-400">Dark Onyx</div>
-                  </div>
-                  <div className="space-y-1 text-center">
-                    <div className="h-10 rounded-lg shadow-xs border border-slate-200 bg-[#F0F4FF]" />
-                    <div className="text-[9px] font-mono text-slate-700 font-bold">#F0F4FF</div>
-                    <div className="text-[8px] text-slate-400">Ice Tint</div>
-                  </div>
-                  <div className="space-y-1 text-center">
-                    <div className="h-10 rounded-lg shadow-xs border border-slate-200 bg-[#083146]" />
-                    <div className="text-[9px] font-mono text-slate-700 font-bold">#083146</div>
-                    <div className="text-[8px] text-slate-400">Deep Navy</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 2. Typography Token Scale (GT Walsheim Pro) */}
-              <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-xl space-y-2">
-                <div className="flex items-center justify-between text-[11px] font-bold text-slate-700">
-                  <span>Typography: GT Walsheim Pro</span>
-                  <span className="text-[10px] text-[#0694D1] font-mono">Type • Weight • Size</span>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[10px]">
-                  <div className="p-1.5 bg-white rounded border border-slate-200">
-                    <div className="font-bold text-slate-900">Headline 1 / 2</div>
-                    <div className="text-slate-500 text-[9px]">Medium/Bold • 60 / 40px</div>
-                  </div>
-                  <div className="p-1.5 bg-white rounded border border-slate-200">
-                    <div className="font-bold text-slate-900">Headline 3</div>
-                    <div className="text-slate-500 text-[9px]">Medium • 38px</div>
-                  </div>
-                  <div className="p-1.5 bg-white rounded border border-slate-200">
-                    <div className="font-bold text-slate-900">Title 1 / 2</div>
-                    <div className="text-slate-500 text-[9px]">Medium • 28 / 22px</div>
-                  </div>
-                  <div className="p-1.5 bg-white rounded border border-slate-200">
-                    <div className="font-bold text-slate-900">Body 1 / 2 / 3</div>
-                    <div className="text-slate-500 text-[9px]">Regular • 18 / 16 / 14px</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 3. Interactive Component States & Elevation Specs */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                {/* Button States Matrix */}
-                <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
-                  <div className="text-[10px] font-bold text-slate-700 uppercase tracking-wider">
-                    Button States (40px/48px)
-                  </div>
-                  <div className="space-y-1.5 text-[10px]">
-                    <div className="flex items-center justify-between">
-                      <span className="text-slate-500">Default:</span>
-                      <span className="px-3 py-1 bg-[#0694D1] text-white font-semibold rounded-full shadow-xs">
-                        More Webinars
-                      </span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-slate-500">Hover:</span>
-                      <span className="px-3 py-1 bg-[#083146] text-white font-semibold rounded-full shadow-xs">
-                        More Webinars
-                      </span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-slate-500">Outline:</span>
-                      <span className="px-3 py-0.5 border border-[#0694D1] text-[#0694D1] font-semibold rounded-full">
-                        Register
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Drop Shadows & Form Field Specs */}
-                <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
-                  <div className="text-[10px] font-bold text-slate-700 uppercase tracking-wider">
-                    Shadow & Elevation Matrix
-                  </div>
-                  <div className="space-y-1 text-[9px] text-slate-600 font-mono">
-                    <div className="p-1.5 bg-white rounded border border-slate-200 shadow-[0px_4px_16px_rgba(104,131,151,0.25)]">
-                      <div className="font-bold text-slate-800">Primary Default:</div>
-                      <div>radius: 16px • 0px 4px 16px rgba(104,131,151,0.25)</div>
-                    </div>
-                    <div className="p-1.5 bg-white rounded border border-slate-200 shadow-[0px_8px_32px_rgba(104,131,151,0.35)]">
-                      <div className="font-bold text-slate-800">Secondary Hover:</div>
-                      <div>radius: 16px • 0px 8px 32px rgba(104,131,151,0.35)</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom Responsive Multi-Device Lineup Banner */}
-          <div className="relative rounded-3xl sm:rounded-[36px] bg-gradient-to-b from-[#f8fafc] via-[#f0f6ff] to-[#e2e8f0] p-6 sm:p-10 lg:p-14 overflow-hidden border border-blue-100 shadow-xl">
-            {/* Directional Chevron Background Backdrop (Mild Blue Tint) */}
-            <div className="absolute inset-0 flex items-center justify-between opacity-15 pointer-events-none overflow-hidden select-none">
-              {[...Array(14)].map((_, i) => (
-                <div key={i} className="text-blue-500 font-black text-4xl sm:text-6xl tracking-tighter transform -skew-x-12">
-                  &gt;&gt;
-                </div>
-              ))}
-            </div>
-
-            <div className="relative z-10 text-center mb-8 sm:mb-12">
-              <div className="inline-block px-3 py-1 bg-white/80 backdrop-blur-sm border border-blue-200 rounded-full text-xs font-bold text-blue-800 uppercase tracking-wider mb-2">
-                Responsive Cross-Platform Lineup
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-neutral-900">
-                Fluid Experience Architecture Across Desktop, Tablet & Mobile
-              </h3>
-            </div>
-
-            {/* 5-Device Stage: Mobile Phone, Tablet, Laptop (Center), Tablet, Mobile Phone */}
-            <div className="relative z-10 flex items-end justify-center gap-2 sm:gap-4 lg:gap-6 max-w-6xl mx-auto pt-4">
-              {/* 1. Far Left: Mobile Smartphone Mockup */}
-              <div className="w-20 sm:w-28 lg:w-36 shrink-0 bg-neutral-950 p-1.5 sm:p-2 rounded-[22px] sm:rounded-[30px] shadow-2xl border-2 border-neutral-800 transition-transform hover:-translate-y-2 duration-300">
-                <div className="bg-slate-900 rounded-[18px] sm:rounded-[24px] overflow-hidden p-2 text-white text-[7px] sm:text-[9px] space-y-1">
-                  <div className="flex justify-between items-center border-b border-slate-800 pb-1">
-                    <span className="font-bold text-sky-400">Koenig</span>
-                    <span className="text-[6px] sm:text-[8px] bg-blue-600 px-1 rounded">1-on-1</span>
-                  </div>
-                  <div className="bg-slate-800 p-1.5 rounded space-y-0.5">
-                    <div className="font-bold text-white">Book Expert</div>
-                    <div className="text-[6px] text-slate-400">Select date & slot</div>
-                  </div>
-                  <div className="bg-blue-600 text-white font-bold text-center py-1 rounded text-[7px]">
-                    Confirm Slot
-                  </div>
-                </div>
-              </div>
-
-              {/* 2. Left Center: Tablet / iPad Mockup */}
-              <div className="hidden sm:block w-36 lg:w-48 shrink-0 bg-neutral-950 p-2 sm:p-2.5 rounded-[24px] sm:rounded-[32px] shadow-2xl border-2 border-neutral-800 transition-transform hover:-translate-y-2 duration-300">
-                <div className="bg-slate-900 rounded-[20px] sm:rounded-[26px] overflow-hidden p-2.5 text-white text-[8px] sm:text-[10px] space-y-1.5">
-                  <div className="flex justify-between items-center border-b border-slate-800 pb-1">
-                    <span className="font-bold text-sky-400">Koenig Help Center</span>
-                    <span className="text-[7px] text-slate-400">Live Support</span>
-                  </div>
-                  <div className="bg-slate-800/90 p-2 rounded space-y-1">
-                    <div className="text-[8px] font-bold text-white">Talk to a Lead Instructor</div>
-                    <div className="grid grid-cols-2 gap-1 text-[7px] text-slate-300">
-                      <div className="bg-slate-700/60 p-1 rounded">Cloud Track</div>
-                      <div className="bg-slate-700/60 p-1 rounded">Security Track</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 3. Center: MacBook / Laptop Main Frame */}
-              <div className="w-56 sm:w-80 lg:w-[460px] shrink-0 bg-neutral-900 p-2 sm:p-3 rounded-2xl sm:rounded-3xl shadow-2xl border-2 sm:border-4 border-neutral-700 transition-transform hover:-translate-y-3 duration-300">
-                {/* Screen Top Bar */}
-                <div className="flex items-center gap-1.5 pb-1.5 border-b border-neutral-800 px-1">
-                  <div className="w-2 h-2 rounded-full bg-blue-500" />
-                  <div className="w-2 h-2 rounded-full bg-blue-400" />
-                  <div className="w-2 h-2 rounded-full bg-blue-300" />
-                  <div className="ml-2 bg-neutral-800 rounded px-2 py-0.5 text-[8px] sm:text-[10px] text-neutral-300 font-mono flex-1 text-center truncate">
-                    koenig-solutions.com/portal
-                  </div>
-                </div>
-
-                {/* Laptop Screen UI */}
-                <div className="bg-slate-950 p-2.5 sm:p-4 rounded-xl text-white space-y-2 sm:space-y-3">
-                  <div className="flex justify-between items-center">
-                    <div className="font-black text-xs sm:text-sm text-sky-400 tracking-tight">KOENIG</div>
-                    <div className="bg-slate-900 border border-slate-800 px-2 py-0.5 rounded text-[8px] sm:text-[10px] text-slate-300">
-                      🔍 Search 5,000+ IT Certifications...
-                    </div>
-                  </div>
-
-                  <div className="bg-gradient-to-r from-blue-900/60 to-slate-900 p-2 sm:p-3 rounded-lg border border-blue-800/40">
-                    <div className="text-[10px] sm:text-xs font-bold text-white">
-                      Accelerate Your Tech Career with 1-on-1 Training
-                    </div>
-                    <div className="text-[8px] sm:text-[9px] text-blue-200 mt-0.5">
-                      Authorized official training for AWS, Microsoft, Cisco & Google Cloud
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-1.5">
-                    <div className="bg-slate-900 border border-slate-800 p-1.5 rounded text-center">
-                      <div className="text-[8px] sm:text-[9px] font-bold text-sky-400">Cloud & DevOps</div>
-                      <div className="text-[7px] text-slate-400">140+ Courses</div>
-                    </div>
-                    <div className="bg-slate-900 border border-slate-800 p-1.5 rounded text-center">
-                      <div className="text-[8px] sm:text-[9px] font-bold text-sky-400">Cybersecurity</div>
-                      <div className="text-[7px] text-slate-400">85+ Courses</div>
-                    </div>
-                    <div className="bg-slate-900 border border-slate-800 p-1.5 rounded text-center">
-                      <div className="text-[8px] sm:text-[9px] font-bold text-sky-400">Data & AI</div>
-                      <div className="text-[7px] text-slate-400">60+ Courses</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Laptop Base Stand */}
-                <div className="w-20 sm:w-32 h-1 sm:h-1.5 bg-neutral-600 mx-auto mt-1 rounded-full" />
-              </div>
-
-              {/* 4. Right Center: Tablet / iPad Mockup */}
-              <div className="hidden sm:block w-36 lg:w-48 shrink-0 bg-neutral-950 p-2 sm:p-2.5 rounded-[24px] sm:rounded-[32px] shadow-2xl border-2 border-neutral-800 transition-transform hover:-translate-y-2 duration-300">
-                <div className="bg-slate-900 rounded-[20px] sm:rounded-[26px] overflow-hidden p-2.5 text-white text-[8px] sm:text-[10px] space-y-1.5">
-                  <div className="flex justify-between items-center border-b border-slate-800 pb-1">
-                    <span className="font-bold text-sky-400">Course Detail</span>
-                    <span className="text-[7px] text-slate-400">Syllabus PDF</span>
-                  </div>
-                  <div className="bg-slate-800/90 p-2 rounded space-y-1">
-                    <div className="text-[8px] font-bold text-white">AWS Solutions Architect</div>
-                    <div className="text-[7px] text-sky-400">✓ Exam Voucher Included</div>
-                    <div className="bg-blue-600 text-white text-center py-0.5 rounded text-[7px] font-bold">
-                      Book Free Demo
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* 5. Far Right: Mobile Smartphone Mockup */}
-              <div className="w-20 sm:w-28 lg:w-36 shrink-0 bg-neutral-950 p-1.5 sm:p-2 rounded-[22px] sm:rounded-[30px] shadow-2xl border-2 border-neutral-800 transition-transform hover:-translate-y-2 duration-300">
-                <div className="bg-slate-900 rounded-[18px] sm:rounded-[24px] overflow-hidden p-2 text-white text-[7px] sm:text-[9px] space-y-1">
-                  <div className="flex justify-between items-center border-b border-slate-800 pb-1">
-                    <span className="font-bold text-sky-400">Success!</span>
-                    <span className="text-[6px] sm:text-[8px] text-slate-400">#KNG-4892</span>
-                  </div>
-                  <div className="bg-slate-800 p-1.5 rounded space-y-0.5 text-center">
-                    <div className="w-4 h-4 rounded-full bg-blue-500/20 text-sky-400 flex items-center justify-center mx-auto text-[8px]">✓</div>
-                    <div className="font-bold text-white text-[7px]">Booking Confirmed</div>
-                    <div className="text-[6px] text-slate-400">Calendar invite sent</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Section 9: Measurable Business & User Impact (Dark Brand Blue Style) */}
+        {/* Section 8: Measurable Business & User Impact (Dark Brand Blue Style) */}
         <section id="impact" className="bg-[#040816] border border-[#1e2d5a] rounded-3xl p-6 sm:p-10 shadow-xl space-y-8 scroll-mt-20">
           <div className="flex items-center justify-between flex-wrap gap-3">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight flex items-center gap-3">
               <span className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center text-sm font-bold shadow-sm">
-                9
+                8
               </span>
               Measurable Results & Business Impact
             </h2>
@@ -1129,12 +1133,12 @@ export function CaseStudyDetail({ onBack, onSelectProject }: CaseStudyDetailProp
           </div>
         </section>
 
-        {/* Section 10: Key Learnings & Retrospective (Consistent Mild Blue Theme) */}
+        {/* Section 9: Key Learnings & Retrospective (Consistent Mild Blue Theme) */}
         <section id="learnings" className="bg-white border border-blue-100 rounded-3xl p-6 sm:p-9 shadow-xs space-y-6 scroll-mt-20">
           <div className="flex items-center justify-between flex-wrap gap-3">
             <h2 className="text-2xl font-bold text-neutral-900 tracking-tight flex items-center gap-2.5">
               <span className="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center text-sm font-bold">
-                10
+                9
               </span>
               Key Learnings & Retrospective
             </h2>

@@ -605,7 +605,7 @@ export function BeforeAfterShowcase() {
               <div className="flex items-center justify-between py-2 px-3 text-xs border-b border-neutral-800 bg-neutral-900/90 shrink-0 z-10">
                 <span className="font-bold text-sky-400 flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-[#0694D1]" />
-                  Redesigned Experience ({currentScreenConfig.fileName})
+                  Redesigned Experience
                 </span>
                 {activeAfterImage && (
                   <button

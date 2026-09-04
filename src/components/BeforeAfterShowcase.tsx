@@ -491,7 +491,7 @@ export function BeforeAfterShowcase() {
       </div>
 
       {/* Clean Screen Switcher Tabs - Directly above the screens */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
+      <div className="flex items-center justify-between gap-3 pt-1">
         {/* Screen Tabs */}
         <div className="inline-flex items-center gap-1 bg-neutral-100/90 p-1.5 rounded-2xl border border-neutral-200/80 overflow-x-auto max-w-full shadow-xs">
           {SCREENS.map((scr) => {
@@ -510,52 +510,6 @@ export function BeforeAfterShowcase() {
               </button>
             );
           })}
-        </div>
-
-        {/* View Tools / Controls */}
-        <div className="flex flex-wrap items-center gap-2 shrink-0">
-          {/* Side-by-Side Badge */}
-          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0694D1]/10 border border-[#0694D1]/30 text-[#0694D1] rounded-xl text-xs font-bold shadow-xs">
-            <Columns2 className="w-3.5 h-3.5" />
-            <span>Side-by-Side View</span>
-          </div>
-
-          {/* Hotspots Toggle */}
-          <button
-            onClick={() => setShowHotspots(!showHotspots)}
-            className={`p-2 rounded-xl border text-xs font-semibold flex items-center gap-1.5 transition-all ${
-              showHotspots
-                ? 'bg-blue-50 text-[#0694D1] border-blue-200'
-                : 'bg-white text-neutral-600 border-neutral-200 hover:bg-neutral-100'
-            }`}
-            title="Toggle Callout Hotspots"
-          >
-            <Info className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">{showHotspots ? 'Pins On' : 'Pins Off'}</span>
-          </button>
-
-          {/* Fit Toggle */}
-          <button
-            onClick={() => setZoomFit((prev) => (prev === 'contain' ? 'cover' : 'contain'))}
-            className="p-2 bg-white hover:bg-neutral-100 text-neutral-700 border border-neutral-200 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all shadow-xs"
-            title={`Toggle image display mode (Current: ${zoomFit})`}
-          >
-            <Maximize2 className="w-3.5 h-3.5 text-neutral-600" />
-            <span className="hidden lg:inline">{zoomFit === 'contain' ? 'Fit' : 'Fill'}</span>
-          </button>
-
-          {/* Fullscreen / High-Res Lightbox */}
-          <button
-            onClick={() => {
-              setLightboxLayer('after');
-              setLightboxOpen(true);
-            }}
-            className="p-2 bg-gradient-to-r from-blue-600 to-[#0694D1] hover:from-blue-700 hover:to-[#057aa8] text-white border border-transparent rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all shadow-xs"
-            title="Inspect Fullscreen (100% Detail)"
-          >
-            <ZoomIn className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Zoom HD</span>
-          </button>
         </div>
       </div>
 
